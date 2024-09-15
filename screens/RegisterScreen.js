@@ -12,12 +12,25 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import React, { useState } from "react";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
 
 const RegisterScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const navigation = useNavigation();
+  const handleRegister = () => {
+    const user = {
+      name: name,
+      email: email,
+      password: password
+    };
+
+    //send a post request to the backend
+    axios.post("http://localhost:8000/register", user).then((response) => {
+      console.log(response)
+    })
+  }
   return (
     <SafeAreaView
       style={{ flex: 1, backgroundColor: "white", alignItems: "center" }}
@@ -25,9 +38,7 @@ const RegisterScreen = () => {
       <View>
         <Image
           style={{ width: 150, height: 150, marginTop: 50 }}
-          source={
-            require('../assets/gbmnobg.png')
-          }
+          source={require("../assets/gbmnobg.png")}
         />
       </View>
       <KeyboardAvoidingView>
@@ -153,6 +164,7 @@ const RegisterScreen = () => {
         </View> */}
         <View style={{ marginTop: 80 }} />
         <Pressable
+          onPress={handleRegister}
           style={{
             width: 200,
             backgroundColor: "#febe10",

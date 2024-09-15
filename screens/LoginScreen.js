@@ -24,9 +24,7 @@ const LoginScreen = () => {
       <View>
         <Image
           style={{ width: 150, height: 150, marginTop: 50 }}
-          source={
-            require('../assets/gbmnobg.png')
-          }
+          source={require("../assets/gbmnobg.png")}
         />
       </View>
       <KeyboardAvoidingView>
